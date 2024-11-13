@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
+
 import MoneyMasterclass from "../Events/Images/MoneyMasterclasscopy.png";
 import BiddingBlitz from "../Events/Images/BiddingBlitz.png";
 import CollegeTrading from "../Events/Images/CollegeTrading.png";

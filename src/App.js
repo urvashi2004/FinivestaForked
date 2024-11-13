@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
-import {Helmet} from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import './App.css';
 import Layout from "./NavbarFooter/Layout";
 
 import Navbar from './NavbarFooter/Navbar';
 import Footer from "./NavbarFooter/Footer";
-
+import CustomTable from './components/CustomTable'; // Importing CustomTable
 import Home from "./Home/Home";
 import Events from "./Events/Events";
 import Sponsor from "./Sponsors/Sponsor";
@@ -40,71 +40,72 @@ import Review5 from "./Resources/BookReviews/bookpages/Review5";
 import Review6 from "./Resources/BookReviews/bookpages/Review6";
 import Review7 from "./Resources/BookReviews/bookpages/Review7";
 
-
 const AppContent = () => {
   const location = useLocation();
 
   useEffect(() => {
+    // Any logic that should run on route change
   }, [location]);
 
   return (
     <div className="App">
       <Helmet>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet" />
       </Helmet>
-      <Navbar/>
+      <Navbar />
       <Layout>
         <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/events" element={<Events/>}/>
-          <Route path="/sponsors" element={<Sponsor/>}/>
-          <Route path="/resources" element={<Resources/>}/>
+          <Route path="/" element={<Home />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/sponsors" element={<Sponsor />} />
+          <Route path="/resources" element={<Resources />} />
+          <Route path="/table" element={<CustomTable />} /> {/* New route for CustomTable */}
+
           {/* Under resources */}
-            <Route path="/resources/moneymasterclass" element={<MoneyMasterclass/>}/>
-            <Route path="/resources/blogs" element={<Blog/>}/>
-              {/* Blog pages */}
-              <Route path="/resources/blogs/01-AI-in-finance" element={<AIinfinance/>}/>
-              <Route path="/resources/blogs/02-finance-and-technology" element={<Financeandtechnology/>}/>
-              <Route path="/resources/blogs/03-power-of-compounding" element={<Powerofcompounding/>}/>
-              <Route path="/resources/blogs/04-liquidation" element={<Liquidation/>}/>
-              <Route path="/resources/blogs/05-financial-literacy" element={<Financialliteracy/>}/>
-              <Route path="/resources/blogs/06-bidding" element={<Bidding/>}/>
-              <Route path="/resources/blogs/07-digital-gold" element={<DigitalGold/>}/>
-              <Route path="/resources/blogs/08-gold-history" element={<GoldHistory/>}/>
-              <Route path="/resources/blogs/09-dhanteras-dynamics" element={<DhanterasDynamics/>}/>
-              <Route path="/resources/blogs/10-gold-on-dhanteras" element={<GoldOnDhanteras/>}/>
+          <Route path="/resources/moneymasterclass" element={<MoneyMasterclass />} />
+          <Route path="/resources/blogs" element={<Blog />} />
 
-              
-              {/*Book pages*/}
-            <Route path="/resources/books" element={<BookReview/>}/>
-            <Route path="/resources/bookreviews/bookpages/doglapan" element={<Review1/>}/>
-            <Route path="/resources/bookreviews/bookpages/intelligentinvestor" element={<Review2/>}/>
-            <Route path="/resources/bookreviews/bookpages/richdadpoordad" element={<Review3/>}/>
-            <Route path="/resources/bookreviews/bookpages/psychologyofmoney" element={<Review4/>}/>
-            <Route path="/resources/bookreviews/bookpages/richestmaninbabylon" element={<Review5/>}/>
-            <Route path="/resources/bookreviews/bookpages/millnextdoor" element={<Review6/>}/>
-            <Route path="/resources/bookreviews/bookpages/moneyorlife" element={<Review7/>}/>
-            <Route path="/resources/youtube" element={<Youtube/>}/>
-            <Route path="/resources/podcasts" element={<Podcast/>}/>
-            <Route path="/resources/stocks" element={<Stocks/>}/>
-            <Route path="/resources/videos" element={<Youtube/>}/>
-            <Route path="/resources/trading" element={<TradingApps/>}/>
+          {/* Blog pages */}
+          <Route path="/resources/blogs/01-AI-in-finance" element={<AIinfinance />} />
+          <Route path="/resources/blogs/02-finance-and-technology" element={<Financeandtechnology />} />
+          <Route path="/resources/blogs/03-power-of-compounding" element={<Powerofcompounding />} />
+          <Route path="/resources/blogs/04-liquidation" element={<Liquidation />} />
+          <Route path="/resources/blogs/05-financial-literacy" element={<Financialliteracy />} />
+          <Route path="/resources/blogs/06-bidding" element={<Bidding />} />
+          <Route path="/resources/blogs/07-digital-gold" element={<DigitalGold />} />
+          <Route path="/resources/blogs/08-gold-history" element={<GoldHistory />} />
+          <Route path="/resources/blogs/09-dhanteras-dynamics" element={<DhanterasDynamics />} />
+          <Route path="/resources/blogs/10-gold-on-dhanteras" element={<GoldOnDhanteras />} />
 
-          <Route path="/team" element={<Team/>}/>
-          <Route path="/contact" element={<Contact/>}/>
+          {/* Book pages */}
+          <Route path="/resources/books" element={<BookReview />} />
+          <Route path="/resources/bookreviews/bookpages/doglapan" element={<Review1 />} />
+          <Route path="/resources/bookreviews/bookpages/intelligentinvestor" element={<Review2 />} />
+          <Route path="/resources/bookreviews/bookpages/richdadpoordad" element={<Review3 />} />
+          <Route path="/resources/bookreviews/bookpages/psychologyofmoney" element={<Review4 />} />
+          <Route path="/resources/bookreviews/bookpages/richestmaninbabylon" element={<Review5 />} />
+          <Route path="/resources/bookreviews/bookpages/millnextdoor" element={<Review6 />} />
+          <Route path="/resources/bookreviews/bookpages/moneyorlife" element={<Review7 />} />
+          <Route path="/resources/youtube" element={<Youtube />} />
+          <Route path="/resources/podcasts" element={<Podcast />} />
+          <Route path="/resources/stocks" element={<Stocks />} />
+          <Route path="/resources/videos" element={<Youtube />} />
+          <Route path="/resources/trading" element={<TradingApps />} />
+
+          <Route path="/team" element={<Team />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
-      <Footer/>
+        <Footer />
       </Layout>
     </div>
   );
 }
 
 function App() {
-
   return (
-      <Router>
-          <AppContent />
-      </Router>
+    <Router>
+      <AppContent />
+    </Router>
   );
 }
 
