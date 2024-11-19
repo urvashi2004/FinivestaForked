@@ -15,12 +15,12 @@ const Games = () => {
       <div className="gamesbox">
 
 
-        <Link to="/resources/moneymasterclass/" className="gamesboxsmall">
+        <Link to="/games/scramble" className="gamesboxsmall">
           <div className="img">
-            <img src={VideosImage} alt="Money Masterclass" />
+            <img src={VideosImage} alt="Scramble Game" />
           </div>
           <div className="text">
-            <h2>Game Name</h2>
+            <h2>Scramble</h2>
             <p>
               Game description
             </p>
