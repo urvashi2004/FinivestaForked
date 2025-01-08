@@ -27,10 +27,10 @@ const  Review11 = () => {
                 <p>
                 A book’s job isn’t just to hold your attention—it’s to spark your curiosity and make you want to keep reading. 
                 And when it comes to learning from mistakes,who better to guide you than someone who’s openly owned up to their financial missteps? 
-                Ankur Warikoo does just that in <i>Make Epic Money</i>,sharing lessons that feel honest,practical, and deeply personal. <br />
+                Ankur Warikoo does just that in <i>Make Epic Money</i>, sharing lessons that feel honest, practical, and deeply personal. <br />
 
                 
-                <i>Make Epic Money</i> is one of the best books on finance out there. At first,it might seem like a simple amalgamation of ideas 
+                <i>Make Epic Money</i> is one of the best books on finance out there. At first, it might seem like a simple amalgamation of ideas 
                 from classics like <i>Rich Dad Poor Dad or The Psychology of Money</i>—and yes, it is written in the simplest language possible but it goes far beyond that. <br />
                 
                 Warikoo masterfully breaks down complex financial concepts with relatable, everyday examples. His writing feels more 
@@ -39,14 +39,14 @@ const  Review11 = () => {
 
                 
                 What makes the book so captivating is its accessibility. You don’t need a background in finance to understand it, and the conversational tone makes it hard to put down. 
-                It’s engaging,practical, and incredibly insightful—a true guide for anyone looking to get their financial life in order.
+                It’s engaging, practical, and incredibly insightful—a true guide for anyone looking to get their financial life in order.
                 
                 <br /><br />
                 
                 <h2>Highlights</h2>
                     
                     <ul>
-                        <li>It covers all age groups, irrespective of if you are in your 20’s,30’s,40’s and what possible methods you can implement according to your age. </li>
+                        <li>It covers all age groups, irrespective of if you are in your 20’s, 30’s, 40’s and what possible methods you can implement according to your age. </li>
                         <li> It is not necessary to have a particular amount of money to plan and budget, this book covers various categories according to your earnings per annum </li>
                         <li> This book has various QR codes which you can use instantly by just scanning and using those tools. </li>
                         <li>It doesn't provide knowledge about starting a business from scratch , but about how to make more money from money. </li>
