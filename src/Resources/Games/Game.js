@@ -1,9 +1,11 @@
 import React from "react";
 import "../Resources.css"; // Ensure this path points to your CSS file
 
-import HL from '../Images/Games/HigherLower/cover.png'; // Replace with your actual game cover image path
+// Import game cover images
+import HL from '../Images/Games/HigherLower/cover.png'; // Higher or Lower game cover
+import FB from '../Images/Games/FinanceBingo/cover.png'; // Finance Bingo game cover 
 
-const Game = () => {
+const Games = () => {
   return (
     <div className="gamepage">
       <div className="header games">
@@ -12,6 +14,7 @@ const Game = () => {
       </div>
 
       <div className="resourcesbox">
+        {/* Higher or Lower Game Card */}
         <div className="boxsmall game">
           <a href="/resources/games/HigherLower/Home">
             <div className="img">
@@ -25,9 +28,24 @@ const Game = () => {
             </div>
           </a>
         </div>
+
+        {/* Finance Bingo Game Card */}
+        <div className="boxsmall game">
+          <a href="/resources/games/FinanceBingo">
+            <div className="img">
+              <img src={FB} alt="Finance Bingo Game Cover" />
+            </div>
+            <div className="text">
+              <h2>Finance Bingo</h2>
+              <p className="game-byline-card">
+                Test your financial knowledge and win BINGO!
+              </p>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
   );
 };
 
-export default Game;
+export default Games;
