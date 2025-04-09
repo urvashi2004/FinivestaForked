@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import gsap from "gsap";
 // import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { FaBitcoin, FaEthereum } from "react-icons/fa";
+import { FaBitcoin, FaChartLine, FaCreditCard, FaEthereum, FaGamepad } from "react-icons/fa";
 import { SiLitecoin, SiCardano, SiRipple } from "react-icons/si";
 import { TextPlugin } from "gsap/TextPlugin";
 import "./Hackathon.css";
@@ -13,13 +13,19 @@ import {   FaHome, FaInfoCircle, FaListAlt, FaQuestionCircle, FaRocket, FaStar }
 // Data for Timeline, Tracks, FAQs
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
+const prizes = [
+  { title: "1st Prize", short: "₹10,000 + Swags", detail: "Gold Medalist gets top prizes & exclusive merch!", medal: "🥇" },
+  { title: "2nd Prize", short: "₹5,000 + Goodies", detail: "Silver Medal winner gets amazing goodies & swags!", medal: "🥈" },
+  { title: "3rd Prize", short: "₹2,500 + Gifts", detail: "Bronze Medal winner receives exciting gifts!", medal: "🥉" }
+];
 
 const timelineEvents = [
-  { date: "March 25", title: "Registrations Open", desc: "Start forming your team and register for the event." },
-  { date: "April 5", title: "Workshops & Mentorship", desc: "Learn from experts and get guidance for your project." },
-  { date: "April 15", title: "Project Submission", desc: "Submit your final project before the deadline." },
-  { date: "April 20", title: "Judging & Results", desc: "Top teams will be selected and winners announced!" },
+  { date: "April 2", title: "Registrations Open", desc: "Start forming your team and work on your project." },
+  { date: "April 11", title: "Project Submission", desc: "Submit the prototype of your project." },
+  { date: "April 12", title: "Mentorship Round", desc: "Understand how we want your final pitch to be." },
+  { date: "April 13", title: "Final Pitch and Judgement", desc: "D-Day: Present your final pitch and get judged!" },
 ];
+
 
 // const tracks = [
 //   { id: "ai_ml", title: "AI & ML", desc: "Innovate with Artificial Intelligence & Machine Learning." },
@@ -29,24 +35,43 @@ const timelineEvents = [
 // ];
 
 const faqs = [
-  { question: "Who can participate?", answer: "Anyone from any background with a passion for tech and innovation!" },
-  { question: "Is there a registration fee?", answer: "No, the hackathon is completely free to join!" },
-  { question: "Do I need a team?", answer: "You can join as an individual or form a team during the event." },
-  { question: "What are the prizes?", answer: "Exciting cash prizes, goodies, and networking opportunities!" },
+  { question: "Who can participate?", answer: "The hackathon is open to students across colleges, branches, and academic years. Whether you're from a different institution, a different engineering stream, or a different batch, you are welcome to participate and collaborate." },
+  { question: "Is there a participation fee?", answer: "No, the hackathon is completely free to join!" },
+  { question: "Will the hackathon be held online or offline?", answer: "Two rounds will be held throughout the hackathon. 1st round will be an online round which will be for 24 hours where Teams will submit their innovative fintech ideas, focusing on feasibility, impact, and originality. Round 2 will be an offline round where Shortlisted teams develop a prototype along with project documentation, including a PPT and project links and after that they pitch their projects to judges, demonstrating the functionality and potential impact of their solution." },
+  { question: "What is the judging criteria?", answer: (<>The solution given by participants will judged on the following basis:<ol>Usability of sponsor tools</ol><ol>Innovation and new technologies</ol><ol>Business model</ol><ol>Scalability</ol><ol>USP</ol><ol>Presentation</ol></>) },
 ];
-
 
 
 
 const problemStatements = [
-  { title: "AI Chatbot for Mental Health", desc: "Develop a chatbot that provides mental health support using AI." },
-  { title: "Decentralized Voting System", desc: "Implement a voting system that ensures transparency using blockchain." },
-  { title: "Stock Price Prediction", desc: "Develop an ML model that predicts real-time stock prices." },
-  { title: "Smart Energy Tracker", desc: "Build an app that helps monitor and reduce energy consumption." },
+  { title: "Next-Gen Finance", icon: <FaCreditCard />, desc: (<>Reimagine the future of finance by building <strong>smarter, faster, and more inclusive</strong> solutions. From seamless digital payments and neobanking to blockchain-powered DeFi and AI-driven investments—push the boundaries of financial technology to enhance accessibility and efficiency for all.</>),},
+  { title: "AI & Emerging Tech", icon: <FaRobot />, desc: (<>Unleash the power of AI, big data, and open banking to <strong>predict market trends, detect fraud, and personalize financial experiences</strong>. Whether it's AI-powered risk assessment, embedded finance APIs, or real-time analytics, create solutions that redefine how money moves in the digital era.</>),},
+  { title: "Beginner-Friendly Tracks", icon: <FaUserGraduate />, desc: (<>Make finance effortless with <strong>user-friendly apps</strong> that help people track expenses, build better financial habits, and navigate cashless transactions. From gamified savings apps to bill-splitting tools and micro-donation platforms, simplify financial management for the everyday user.</>),},
+  { title: "Financial Games", icon: <FaGamepad />, desc: (<>Turn finance into a game! Develop <strong>interactive, engaging simulations</strong> where players learn about investing, budgeting, and market strategies while having fun. Whether it's <strong>Finopoly—our Monopoly-inspired financial literacy game</strong>, a stock trading fantasy league, a Shark Tank-style pitch battle, or a life simulator where financial choices shape the future—make learning finance an experience, not a chore!</>),},
+  { title: "Data Analytics & Visualization", icon: <FaChartLine />, desc: (<>Unlock the power of financial data! Analyze spending behaviors, forecast investment risks, detect transaction fraud, or map real estate pricing trends. Transform <strong>complex financial datasets into actionable insights</strong> through predictive modeling, dynamic dashboards, and AI-powered analytics.</>),},
+  { title: "Open Innovation", icon: <FaLightbulb />, desc: (<>Got a <strong>wild idea that doesn’t fit the mold</strong>? This track is your playground. Whether it’s a unique finance-meets-health concept, an unexpected use of blockchain, or a solution that redefines accessibility in finance, bring your most <strong>out-of-the-box</strong> innovation to life!</>),},
 ];
-const words = [ "FinTech ", "AI Revolution ","Innovation", "Blockchain "];
+const words = ["You", "FinTech ", "AI Revolution ","Innovation", "Blockchain "];
 
 
+const sponsors = [
+  {
+    image: 'https://blithchron.iitgn.ac.in/_astro/InterviewBuddy.BVkItRdN.webp',
+    website: 'https://www.sponsor1.com'
+  },
+  {
+    image: 'https://blithchron.iitgn.ac.in/_astro/InterviewBuddy.BVkItRdN.webp',
+    website: 'https://www.sponsor2.com'
+  },
+  {
+    image: 'https://blithchron.iitgn.ac.in/_astro/InterviewBuddy.BVkItRdN.webp',
+    website: 'https://www.sponsor3.com'
+  },
+  {
+    image: 'https://blithchron.iitgn.ac.in/_astro/InterviewBuddy.BVkItRdN.webp',
+    website: 'https://www.sponsor4.com'
+  }
+];
 const Hackathon = () => {
   const [openFAQ, setOpenFAQ] = useState(null);
 
@@ -229,6 +254,45 @@ const Hackathon = () => {
 //     window.removeEventListener("mousemove", handleMouseMove);
 //   };
 // }, []);
+const createSparkle = (event) => {
+  const sparkle = document.createElement("div");
+  sparkle.classList.add("sparkle");
+
+  // Get the mouse position
+  const mouseX = event.clientX;
+  const mouseY = event.clientY;
+
+  sparkle.style.left = `${mouseX}px`;
+  sparkle.style.top = `${mouseY}px`;
+
+  // Append sparkle to the body and remove it after animation
+  document.body.appendChild(sparkle);
+  setTimeout(() => {
+    sparkle.remove();
+  }, 500); // Matches the duration of the animation
+};
+useEffect(() => {
+  // Add mousemove event listener to create sparkle effect
+  document.querySelector(".sponsor-slider").addEventListener("mousemove", createSparkle);
+
+  // Clean up the event listener on component unmount
+  return () => {
+    document.querySelector(".sponsor-slider").removeEventListener("mousemove", createSparkle);
+  };
+}, []);
+
+  const handleClick = (website) => {
+    window.open(website, '_blank');
+  
+  }
+const [flipped, setFlipped] = useState([false, false, false]);
+
+const handleFlip = (index) => {
+  const newFlipped = [...flipped];
+  newFlipped[index] = !newFlipped[index];
+  setFlipped(newFlipped);
+};
+
 
   return (
     <div className="hackathon-container">
@@ -327,9 +391,11 @@ const Hackathon = () => {
   <h2 className="features-title">Tracks</h2>
   <div className="features-grid">
     {[
-      { text: "AI & ML", icon: <FaRobot className="feature-icon" /> },
-      { text: "Blockchain", icon: <FaGlobe className="feature-icon" /> },
-      { text: "Beginner", icon: <FaUserGraduate className="feature-icon" /> },
+      { text: "Next-Gen Finance", icon: <FaCreditCard className="feature-icon" /> },
+      { text: "AI & Emerging Tech", icon: <FaRobot className="feature-icon" /> },
+      { text: "Beginner Friendly", icon: <FaUserGraduate className="feature-icon" /> },
+      { text: "Financial Games", icon: <FaGamepad className="feature-icon" /> },
+      { text: "Data Analytics & Visualisation", icon: <FaChartLine className="feature-icon" /> },
       { text: "Open Innovation", icon: <FaLightbulb className="feature-icon" /> },
     ].map((feature, index) => (
       <div className="feature-card" key={index}>
@@ -340,33 +406,11 @@ const Hackathon = () => {
   </div>
 </section>
 
-{/* Themes Section (Appears on Track Click) */}
-{/* {selectedTrack && (
-  <section className="problems">
-    <h2 className="problems-title">
-      {tracks.find((t) => t.id === selectedTrack)?.title} - Problem Statements
-    </h2>
-    <div className="problems-grid">
-      {problemStatements[selectedTrack].map((problem, index) => (
-        <div
-          key={index}
-          className={`problem-card ${openProblem === index ? "expanded" : ""}`}
-          onClick={() => toggleProblem(index)}
-        >
-          <h3 className="problem-title">{problem.title}</h3>
-          {openProblem === index && <p className="problem-desc">{problem.desc}</p>}
-          <button className="view-details-btn">
-            {openProblem === index ? "Hide Details" : "View Details"}
-          </button>
-        </div>
-      ))}
-    </div>
-  </section>
-)} */}
 
 
 
 
+{/* Problem-Carousel */}
     <section className="problem-carousel">
     <div className="star-container"></div>
       <h2 className="carousel-title">Problem Statements</h2>
@@ -414,7 +458,58 @@ const Hackathon = () => {
       </div>
     </section>
 
-  
+
+  {/* Sponsors Slider */}
+
+
+    <div className="sponsor-slider-section">
+      <h2>Our Sponsors</h2>
+      <div className="sponsor-slider">
+        <div className="slider-track">
+          {sponsors.concat(sponsors).concat(sponsors).map((sponsor, index) => (
+            <div
+              key={index}
+              className="slide"
+              onClick={() => handleClick(sponsor.website)}
+            >
+              <img
+                src={sponsor.image}
+                alt={`Sponsor ${index + 1}`}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+{/* Prizes Section */}
+      <div className="prizes-section">
+      <div className="star-container">  </div>
+    <h2> Prizes</h2>
+    <div className="prizes-container">
+      {prizes.map((prize, index) => (
+        <div
+          key={index}
+          className={`prize-card prize-${index} ${flipped[index] ? 'flipped' : ''}`}
+          onClick={() => handleFlip(index)}
+        >
+          <div className="card-inner">
+            <div className="card-front">
+              <div className="medal-icon">{prize.medal}</div>
+              <h3>{prize.title}</h3>
+              <p>{prize.short}</p>
+              <button>More</button>
+            </div>
+            <div className="card-back">
+              <p>{prize.detail}</p>
+              <button>Back</button>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
   
       {/* FAQs Section */}
       <section id="faqs" className="faqs">
@@ -434,5 +529,6 @@ const Hackathon = () => {
     </div>
   );
 };
+
 
 export default Hackathon;
