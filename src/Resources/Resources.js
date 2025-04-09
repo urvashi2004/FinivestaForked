@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Resources.css";
+import ModelViewer from "./ModelViewer";
 
 // Import resource images
 import BlogsImage from "./Images/blogs_img2.png";
@@ -34,7 +35,7 @@ const resources = [
     title: "Book Reviews",
     description:
       "Book reviews on Finance and Entrepreneurship delve into the latest literary treasures unlocking the secrets to wealth creation and business success.",
-    image: BooksImage,
+    modelPath: "/dmodels/talking-to-strangers-malcolm-gladwell/source/poly.gib",
     link: "/resources/bookreviews",
   },
   {
@@ -82,8 +83,8 @@ const Resources = () => {
       <div className="resourcesbox">
         {resources.map((resource) => (
           <Link key={resource.id} to={resource.link} className="boxsmall">
-            <div className="img">
-              <img src={resource.image} alt={resource.title} />
+            <div className="resourcesmodel">
+              <ModelViewer modelpath={resource.modelPath} />
             </div>
             <div className="text">
               <h2>{resource.title}</h2>

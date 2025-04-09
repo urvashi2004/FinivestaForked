@@ -176,7 +176,6 @@ function App() {
   const [showLoader, setShowLoader] = useState(() => {
     return sessionStorage.getItem("loaderShown") ? false : true;
   });
-  
 
   useEffect(() => {
     if (showLoader) {
@@ -189,12 +188,10 @@ function App() {
     }
   }, [showLoader]);
   
-
   return (
     <Router>
       {showLoader && <Loader />}
       {!showLoader && <AppContent />}
-
     </Router>
   );
 }
@@ -202,7 +199,7 @@ function App() {
 
 function App() {
   return (
-    <Router>
+    <Router future={{ v7_startTransition: true }}>
       <AppContent />
     </Router>
   );

@@ -167,6 +167,11 @@
   font-size: 1.2rem;
 }
 
+.resourcesmodel {
+  width: 100%;
+  margin: auto;
+}
+
 @media only screen and (max-width: 1064px) {
   .boxsmall {
     width: 32vw;
