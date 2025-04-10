@@ -427,14 +427,12 @@ button.slick-arrow.slick-prev::before{
       } 
 
 
-
-/*
-.banner {
-  background-image: url('../Events/FinWeek25/FINWEEK.png'); 
+.home-banner {
+  background-image: url('../Hackathon/HackBanner.png'); 
   background-size: cover;
   background-position: center;
   text-align: center;
-  aspect-ratio: 2.5;
+  aspect-ratio: 4;
   position: relative; 
 }
 
@@ -448,8 +446,15 @@ button.slick-arrow.slick-prev::before{
   justify-content: center;
 }
 
+.banner-button-row {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 20px;
+}
+
 .banner-button {
-  background-color: #d3d957; 
+  background-color: #5c922c; 
   color: rgb(0, 0, 0);
   border: none;
   padding: 15px 30px; 
@@ -457,10 +462,6 @@ button.slick-arrow.slick-prev::before{
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.3s ease;
-  position: absolute;
-  bottom: 20px; 
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .banner-button:hover {
@@ -481,4 +482,3 @@ button.slick-arrow.slick-prev::before{
     padding: 8px 16px;
   }
 }
-*/

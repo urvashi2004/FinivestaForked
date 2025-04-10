@@ -48,6 +48,7 @@ const Home = () => {
   return (
     <div className="Home">
 
+    {/*}
       <section className="hero">
         <div className="content">
           <h1>
@@ -81,21 +82,22 @@ const Home = () => {
           </div>
         </div>
       </section>
+      */}
 
-      {/* Banner Section */}
-
-      {/*
-      <section className="banner">
+      <section className="home-banner">
         <div className="banner-content">
-          <button
-            className="banner-button"
-            onClick={() => (window.location.href = "/finweek25")}
-          >
-            Learn More
-          </button>
+          
         </div>
       </section>
-      */}
+      
+      <div className="banner-button-row">
+        <button
+          className="banner-button"
+          onClick={() => (window.location.href = "/hackathon")}
+        >
+          Explore
+        </button>
+      </div>
 
       {/* Jhalak's code */}
       <section className="course">

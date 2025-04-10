@@ -18,6 +18,7 @@
     position: relative;
     overflow: hidden;
   }
+  
   .sidebar {
     position: fixed;
     top: 50%;
@@ -1118,4 +1119,101 @@
     transform: none; /* Ensure no raised effect on mobile */
     z-index: 1; /* Reset z-index for mobile */
   }
+}
+
+.orbit-section {
+  display: grid;
+  max-inline-size: 100%;
+  min-block-size: 100vh;
+  overflow-x: clip;
+  padding-block: 80px;
+  place-items: center;
+}
+
+.orbit-section-wrapper {
+  display: grid;
+  place-items: center;
+}
+
+.orbit-header {
+  display: grid;
+  place-items: center;
+  gap: 16px;
+}
+
+.orbit-hgroup {
+  display: grid;
+  place-items: center;
+  gap: 8px;
+}
+
+.orbit-headline {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.orbit-tagline {
+  font-size: 1.2rem;
+  color: #666;
+  text-align: center;
+}
+
+.orbit-cards {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+  max-inline-size: 100%;
+  padding-block: 32px;
+  padding-inline: 32px;
+}
+
+.orbit-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.orbit-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.orbit-avatar-link-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  padding: 16px;
+}
+
+.orbit-visual {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  border-radius: 50%;
+  margin-bottom: 16px;
+}
+
+.orbit-tooltiptext {
+  text-align: center;
+}
+
+.orbit-team-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.orbit-team-title {
+  font-size: 1rem;
+  color: #666;
 }
