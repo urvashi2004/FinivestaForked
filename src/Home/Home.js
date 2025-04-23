@@ -6,6 +6,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
+import HackBanner02 from '../Hackathon/Hackbanner02.png';
+import HackBanner03 from '../Hackathon/Hackbanner03.png';
+
 // import { Tween } from 'react-gsap';
 
 const Home = () => {
@@ -84,9 +87,12 @@ const Home = () => {
       </section>
       */}
 
-      <section className="home-banner">
-        <div className="banner-content">
-          
+      <section class="landing">
+        <div class="slideshow">
+          <div class="slides">
+              <img class="slide" src={HackBanner03} alt="Slide 1"/>
+              <img class="slide" src={HackBanner02} alt="Slide 2"/>
+          </div>
         </div>
       </section>
       

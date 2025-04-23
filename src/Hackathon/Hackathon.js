@@ -5,6 +5,7 @@ import { FaBitcoin, FaChartLine, FaCreditCard, FaEthereum, FaGamepad } from "rea
 import { SiLitecoin, SiCardano, SiRipple } from "react-icons/si";
 import { TextPlugin } from "gsap/TextPlugin";
 import "./Hackathon.css";
+import './Tracks.css';
 import { FaUsers, FaLightbulb, FaTrophy, FaBookOpen, FaChevronLeft, FaChevronRight, FaRobot, FaGlobe, FaUserGraduate, FaHome, FaInfoCircle, FaListAlt, FaQuestionCircle, FaRocket, FaStar } from "react-icons/fa";
 
 const prizes = [
@@ -61,192 +62,165 @@ const Hackathon = () => {
   const [openFAQ, setOpenFAQ] = useState(null);
 
   useEffect(() => {
-    // Crypto Icons Animation
-    
-      gsap.registerPlugin(ScrollTrigger, TextPlugin);
-    
-      gsap.utils.toArray(".crypto-icon").forEach((icon, index) => {
-        gsap.to(icon, {
-          y: index % 2 === 0 ? 20 : -20, // Alternate up & down movement
-          rotate: index % 2 === 0 ? 5 : -5, // Slight rotation effect
-          repeat: -1,
-          yoyo: true,
-          duration: gsap.utils.random(2, 2.5), // Randomized timing for organic movement
-          ease: "power1.inOut",
-        });
+    // GSAP Setup & Animations
+    gsap.registerPlugin(ScrollTrigger, TextPlugin);
+  
+    // Floating Crypto Icons
+    gsap.utils.toArray(".crypto-icon").forEach((icon, index) => {
+      gsap.to(icon, {
+        y: index % 2 === 0 ? 20 : -20,
+        rotate: index % 2 === 0 ? 5 : -5,
+        repeat: -1,
+        yoyo: true,
+        duration: gsap.utils.random(2, 2.5),
+        ease: "power1.inOut",
       });
-    
-      // 🚀 Hero Section - Staggered Fade-in for Smooth Transition
-      gsap.from([".hackathonhero-title", ".hackathonhero-subtitle", ".hackathonhero-button"], {
+    });
+  
+    // Hero Section - Staggered Entrance
+    gsap.from([".hackathonhero-title", ".hackathonhero-subtitle", ".hackathonhero-button"], {
+      opacity: 0,
+      y: 50,
+      duration: 1.2,
+      stagger: 0.3,
+      ease: "power2.out",
+    });
+  
+    // Sections - Fade-in on Scroll
+    const sections = [
+      ".about-container",
+      ".features-title",
+      ".features-grid",
+      ".timeline-title",
+      ".tracks-title",
+      ".faqs-title"
+    ];
+    gsap.utils.toArray(sections).forEach((section) => {
+      gsap.from(section, {
         opacity: 0,
         y: 50,
         duration: 1.2,
-        stagger: 0.3,
         ease: "power2.out",
-      });
-    
-      // 📜 Sections - Fade-in on Scroll with Better Timing
-      const sections = [
-        ".about-container",
-        ".features-title",
-        ".features-grid",
-        ".timeline-title",
-        ".tracks-title",
-        ".faqs-title"
-      ];
-      
-      gsap.utils.toArray(sections).forEach((section) => {
-        gsap.from(section, {
-          opacity: 0,
-          y: 50,
-          duration: 1.2,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-            toggleActions: "play none none none",
-          },
-        });
-      });
-    
-      // 🔄 Timeline - Left/Right Slide-in Animation
-      gsap.utils.toArray(".timeline-event").forEach((event, index) => {
-        gsap.from(event, {
-          opacity: 0,
-          x: index % 2 === 0 ? -100 : 100, // Alternates left & right
-          duration: 1,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: event,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-        });
-      });
-    
-      // ✨ Tracks & FAQ Cards - Smooth Pop-in Effect
-      gsap.from(".track-card, .faq-card", {
-        opacity: 0,
-        y: 50,
-        scale: 0.9,
-        stagger: 0.2,
-        duration: 1.2,
-        ease: "power3.out",
         scrollTrigger: {
-          trigger: ".tracks-grid, .faqs-container",
+          trigger: section,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      });
+    });
+  
+    // Timeline Events - Slide In
+    gsap.utils.toArray(".timeline-event").forEach((event, index) => {
+      gsap.from(event, {
+        opacity: 0,
+        x: index % 2 === 0 ? -100 : 100,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: event,
           start: "top 85%",
           toggleActions: "play none none reverse",
         },
       });
-    
-      gsap.utils.toArray(".track-card").forEach((track) => {
-        gsap.from(track, {
-          opacity: 0,
-          y: 30,
-          duration: 0.8,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: track,
-            start: "top 90%",
-            toggleActions: "play none none none",
-          },
-        });
+    });
+  
+    // Track & FAQ Cards Animation
+    gsap.from(".track-card, .faq-card", {
+      opacity: 0,
+      y: 50,
+      scale: 0.9,
+      stagger: 0.2,
+      duration: 1.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".tracks-grid, .faqs-container",
+        start: "top 85%",
+        toggleActions: "play none none reverse",
+      },
+    });
+  
+    gsap.utils.toArray(".track-card").forEach((track) => {
+      gsap.from(track, {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: track,
+          start: "top 90%",
+          toggleActions: "play none none none",
+        },
       });
-
-      const starContainers = document.querySelectorAll(".star-container");
-      starContainers.forEach((container) => {
-        container.innerHTML = "";
-        for (let i = 0; i < 200; i++) {
-          const star = document.createElement("div");
-          star.className = "star";
-          star.style.top = `${Math.random() * 100}%`;
-          star.style.left = `${Math.random() * 100}%`;
-          star.style.animationDuration = `${Math.random() * 3 + 2}s`;
-          container.appendChild(star);
-        }
-      });
-
-      let tl = gsap.timeline({ repeat: -1 });
-      words.forEach((word, i) => {
-        tl.to(".hackathonhero-title span", { // Targeting only the span inside the h1
-          duration: 3,
-          text: word, // Only changes the word inside
-          ease: "power2.out",
-        })
-        .to(".hackathonhero-title span", { opacity: 0, duration: 1.5, delay: 1 }) // Smooth fade out
-        .to(".hackathonhero-title span", { opacity: 1, duration: 1 }); // Fade in with the new word
-      });
-
-      ScrollTrigger.refresh();
-    
-    }, []);
-    
-    const [currentIndex, setCurrentIndex]=useState(0);
-
-    useEffect(() => {
-      const interval = setInterval(() => {
-        nextProblem();
-      },5000); // auto-scroll every 5 seconds
-
-      return()=> clearInterval(interval);
-    }, [currentIndex]);
-
-    const prevProblem = () => {
-      setCurrentIndex((prevIndex)=>
-        prevIndex===0 ? problemStatements.length-1:prevIndex-1
-      );
-    };
-
-    const nextProblem = () => {
-      setCurrentIndex((prevIndex)=>
-      prevIndex===problemStatements.length-1?0:prevIndex+1
-    );
+    });
+  
+    // Star Background Effect
+    document.querySelectorAll(".star-container").forEach((container) => {
+      container.innerHTML = "";
+      for (let i = 0; i < 200; i++) {
+        const star = document.createElement("div");
+        star.className = "star";
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+        container.appendChild(star);
+      }
+    });
+  
+    // Hero Word Animation
+    const tl = gsap.timeline({ repeat: -1 });
+    words.forEach((word) => {
+      tl.to(".hackathonhero-title span", {
+        duration: 3,
+        text: word,
+        ease: "power2.out",
+      })
+      .to(".hackathonhero-title span", { opacity: 0, duration: 1.5, delay: 1 })
+      .to(".hackathonhero-title span", { opacity: 1, duration: 1 });
+    });
+  
+    ScrollTrigger.refresh();
+  }, []);
+ 
+  const [currentIndex, setCurrentIndex] = useState(0);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextProblem();
+    }, 5000);
+  
+    return () => clearInterval(interval);
+  }, [currentIndex]);
+  
+  const prevProblem = () => {
+    setCurrentIndex(prev => (prev === 0 ? problemStatements.length - 1 : prev - 1));
+  };
+  
+  const nextProblem = () => {
+    setCurrentIndex(prev => (prev === problemStatements.length - 1 ? 0 : prev + 1));
   };
   
   const toggleFAQ = (index) => {
     setOpenFAQ(openFAQ === index ? null : index);
   };
-
-  const createSparkle = (event) => {
-    const sparkle = document.createElement("div");
-    sparkle.classList.add("sparkle");
-
-    // Get the mouse position
-    const mouseX = event.clientX;
-    const mouseY = event.clientY;
-
-    sparkle.style.left = `${mouseX}px`;
-    sparkle.style.top = `${mouseY}px`;
-
-    // Append sparkle to the body and remove it after animation
-    document.body.appendChild(sparkle);
-    setTimeout(() => {
-      sparkle.remove();
-    }, 500); // Matches the duration of the animation
-  };
-
-  useEffect(() => {
-    // Add mousemove event listener to create sparkle effect
-    document.querySelector(".sponsor-slider").addEventListener("mousemove", createSparkle);
-
-    // Clean up the event listener on component unmount
-    return () => {
-      document.querySelector(".sponsor-slider").removeEventListener("mousemove", createSparkle);
-    };
-  }, []);
-
+  
   const handleClick = (website) => {
-    window.open(website, '_blank');
-  }
-
-  const [flipped, setFlipped] = useState([false, false, false]);
-
-  const handleFlip = (index) => {
-    const newFlipped = [...flipped];
-    newFlipped[index] = !newFlipped[index];
-    setFlipped(newFlipped);
+    window.open(website, "_blank");
   };
-
+  
+  const [flipped, setFlipped] = useState([false, false, false]);
+  
+  const handleFlip = (index) => {
+    const updated = [...flipped];
+    updated[index] = !updated[index];
+    setFlipped(updated);
+  };
+  
+  const [activeContent, setActiveContent] = useState("content1");
+  
+  const handleMouseOver = (id) => {
+    setActiveContent(id);
+  };
+  
   return (
     <div className="hackathon-container">
 
@@ -335,62 +309,130 @@ const Hackathon = () => {
         </div>
       </section>
 
-      {/* Tracks Section */}
-      <section id="tracks" className="orbit-section">
-        <div className="orbit-wrapper">
-          <header className="orbit-header">
-            <hgroup className="orbit-hgroup">
-              <h2 className="orbit-headline">Tracks</h2>
-              <p className="orbit-tagline">Explore the tracks of our hackathon</p>
-            </hgroup>
-          </header>
-          <ul className="orbit-cards" style={{ "--nth-siblings": 5 }}>
-            {[
-              {
-                text: "Next-Gen Finance",
-                icon: <FaCreditCard />,
-                desc: "Innovating the future of financial systems",
-              },
-              {
-                text: "AI & Emerging Tech",
-                icon: <FaRobot />,
-                desc: "Harnessing AI to drive innovation",
-              },
-              {
-                text: "Beginner Friendly",
-                icon: <FaUserGraduate />,
-                desc: "Tracks designed for newcomers",
-              },
-              {
-                text: "Financial Games",
-                icon: <FaGamepad />,
-                desc: "Gamifying finance for better learning",
-              },
-              {
-                text: "Data Analytics & Visualization",
-                icon: <FaChartLine />,
-                desc: "Turning data into actionable insights",
-              },
-              {
-                text: "Open Innovation",
-                icon: <FaLightbulb />,
-                desc: "Breaking boundaries with creativity",
-              },
-            ].map(({ text, icon, desc }, index) => (
-              <li className="card" style={{ "--nth-child": index + 1 }} key={index}>
-                <a href="#" className="orbit-avatar-link-wrapper">
-                  <div className="orbit-visual">{icon}</div>
-                  <div className="orbit-tooltiptext">
-                    <h3 className="orbit-team-name">{text}</h3>
-                    <div className="orbit-team-content-wrapper">
-                      <p className="orbit-team-title">{desc}</p>
-                    </div>
-                  </div>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+      <section id="tracks">
+        <h2 className="tracks-title">Tracks</h2>
+        <div className="tracks-body">
+          <div className="tracks-container">
+          <div className="tracks-icon">
+            <div
+              className={`tracks-imgBx ${activeContent === "content1" ? "active" : ""}`}
+              data-id="content1"
+              style={{ "--i": 0 }}
+              onMouseOver={() => handleMouseOver("content1")}
+            >
+              <FaCreditCard />
+            </div>
+            <div
+              className={`tracks-imgBx ${activeContent === "content2" ? "active" : ""}`}
+              data-id="content2"
+              style={{ "--i": 1 }}
+              onMouseOver={() => handleMouseOver("content2")}
+            >
+              <FaRobot />
+            </div>
+            <div
+              className={`tracks-imgBx ${activeContent === "content3" ? "active" : ""}`}
+              data-id="content3"
+              style={{ "--i": 2 }}
+              onMouseOver={() => handleMouseOver("content3")}
+            >
+              <FaUserGraduate />
+            </div>
+            <div
+              className={`tracks-imgBx ${activeContent === "content4" ? "active" : ""}`}
+              data-id="content4"
+              style={{ "--i": 3 }}
+              onMouseOver={() => handleMouseOver("content4")}
+            >
+              <FaGamepad />
+            </div>
+            <div
+              className={`tracks-imgBx ${activeContent === "content5" ? "active" : ""}`}
+              data-id="content5"
+              style={{ "--i": 4 }}
+              onMouseOver={() => handleMouseOver("content5")}
+            >
+              <FaChartLine />
+            </div>
+            <div
+              className={`tracks-imgBx ${activeContent === "content6" ? "active" : ""}`}
+              data-id="content6"
+              style={{ "--i": 5 }}
+              onMouseOver={() => handleMouseOver("content6")}
+            >
+              <FaLightbulb />
+            </div>
+          </div>
+          <div className="tracks-content">
+            <div className={`tracks-contentBx ${activeContent === "content1" ? "active" : ""}`} id="content1">
+              <div className="tracks-card">
+                <div className="tracks-imgBx">
+                  <FaCreditCard />
+                </div>
+                <div className="tracks-textBx">
+                  <h3>Next-Gen Finance</h3>
+                  <p>Innovating the future of financial systems</p>
+                </div>
+              </div>
+            </div>
+            <div className={`tracks-contentBx ${activeContent === "content2" ? "active" : ""}`} id="content2">
+              <div className="tracks-card">
+                <div className="tracks-imgBx">
+                  <FaRobot />
+                </div>
+                <div className="tracks-textBx">
+                  <h3>AI & Emerging Tech</h3>
+                  <p>Harnessing AI to drive innovation</p>
+                </div>
+              </div>
+            </div>
+            <div className={`tracks-contentBx ${activeContent === "content3" ? "active" : ""}`} id="content3">
+              <div className="tracks-card">
+                <div className="tracks-imgBx">
+                  <FaUserGraduate />
+                </div>
+                <div className="tracks-textBx">
+                  <h3>Beginner Friendly</h3>
+                  <p>Tracks designed for newcomers</p>
+                </div>
+              </div>
+            </div>
+            <div className={`tracks-contentBx ${activeContent === "content4" ? "active" : ""}`} id="content4">
+              <div className="tracks-card">
+                <div className="tracks-imgBx">
+                  <FaGamepad />
+                </div>
+                <div className="tracks-textBx">
+                  <h3>Financial Games</h3>
+                  <p>Gamifying finance for better learning</p>
+                </div>
+              </div>
+            </div>
+            <div className={`tracks-contentBx ${activeContent === "content5" ? "active" : ""}`} id="content5">
+              <div className="tracks-card">
+                <div className="tracks-imgBx">
+                  <FaChartLine />
+                </div>
+                <div className="tracks-textBx">
+                  <h3>Data Analytics & Visualization</h3>
+                  <p>Turning data into actionable insights</p>
+                </div>
+              </div>
+            </div>
+            <div className={`tracks-contentBx ${activeContent === "content6" ? "active" : ""}`} id="content6">
+              <div className="tracks-card">
+                <div className="tracks-imgBx">
+                  <FaLightbulb />
+                </div>
+                <div className="tracks-textBx">
+                  <h3>Open Innovation</h3>
+                  <p>Breaking boundaries with creativity</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>  
       </section>
 
       {/* Problem-Carousel */}
@@ -449,7 +491,7 @@ const Hackathon = () => {
             {sponsors.concat(sponsors).concat(sponsors).map((sponsor, index) => (
               <div
                 key={index}
-                className="slide"
+                className="hack-slide"
                 onClick={() => handleClick(sponsor.website)}
               >
                 <img
