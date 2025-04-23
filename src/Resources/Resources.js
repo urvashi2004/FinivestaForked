@@ -5,7 +5,7 @@ import ModelViewer from "./ModelViewer";
 
 // Import resource images
 import BlogsImage from "./Images/blogs_img2.png";
-import BooksImage from "./Images/book_reviews_img.png";
+// import BooksImage from "./Images/book_reviews_img.png";
 import PodcastImages from "./Images/podcasts.jpg";
 import VideosImage from "./Images/Videos.jpg";
 import ShareMarketImage from "./Images/sharemarket_img2.png";
@@ -35,7 +35,7 @@ const resources = [
     title: "Book Reviews",
     description:
       "Book reviews on Finance and Entrepreneurship delve into the latest literary treasures unlocking the secrets to wealth creation and business success.",
-    modelPath: "/dmodels/talking-to-strangers-malcolm-gladwell/source/poly.gib",
+    modelPath: "/models3d/book/book.gltf",
     link: "/resources/bookreviews",
   },
   {
@@ -83,14 +83,18 @@ const Resources = () => {
       <div className="resourcesbox">
         {resources.map((resource) => (
           <Link key={resource.id} to={resource.link} className="boxsmall">
-            <div className="resourcesmodel">
-              <ModelViewer modelpath={resource.modelPath} />
-            </div>
-            <div className="text">
-              <h2>{resource.title}</h2>
-              <p>{resource.description}</p>
-            </div>
-          </Link>
+          <div className="resourcesmodel">
+            {resource.modelPath ? (
+              <ModelViewer modelPath={resource.modelPath} />
+            ) : (
+              <img src={resource.image} alt={resource.title} />
+            )}
+          </div>
+          <div className="text">
+            <h2>{resource.title}</h2>
+            <p>{resource.description}</p>
+          </div>
+        </Link>
         ))}
       </div>
     </div>
