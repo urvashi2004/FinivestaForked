@@ -20,6 +20,7 @@ import {
   FaChevronLeft,
   FaChevronRight,
   FaRobot,
+  // FaGlobe,
   FaUserGraduate,
   FaHome,
   FaInfoCircle,
@@ -30,8 +31,29 @@ import {
 } from "react-icons/fa";
 // import devfolioBtn from "./apply-with-devfolio.png";
 //sponsors logos
-// import interviewbuddylogo from "./SponsorImages/interviewbuddy.png";
-// import yrilogo from "./SponsorImages/yri.png";
+import interviewbuddylogo from "./SponsorImages/interviewbuddy.png";
+import yrilogo from "./SponsorImages/yri.png";
+
+// const prizes = [
+//   {
+//     title: "1st Prize",
+//     short: "₹10,000 + Swags",
+//     detail: "Gold Medalist gets top prizes & exclusive merch!",
+//     medal: "🥇",
+//   },
+//   {
+//     title: "2nd Prize",
+//     short: "₹5,000 + Goodies",
+//     detail: "Silver Medal winner gets amazing goodies & swags!",
+//     medal: "🥈",
+//   },
+//   {
+//     title: "3rd Prize",
+//     short: "₹2,500 + Gifts",
+//     detail: "Bronze Medal winner receives exciting gifts!",
+//     medal: "🥉",
+//   },
+// ];
 
 const timelineEvents = [
   {
@@ -182,6 +204,29 @@ const words = [
   "Innovation",
   "Blockchain ",
 ];
+
+// const sponsors = [
+//   {
+//     name: "YRI Fellowship",
+//     image: yrilogo,
+//     website: "https://www.yriscience.com/",
+//   },
+//   {
+//     name: "InterviewBuddy",
+//     image: interviewbuddylogo,
+//     website: "https://interviewbuddy.net/",
+//   },
+//   {
+//     name: "xyz",
+//     image: "https://blithchron.iitgn.ac.in/_astro/InterviewBuddy.BVkItRdN.webp",
+//     website: "https://www.sponsor3.com",
+//   },
+//   {
+//     name: "abcd",
+//     image: "https://blithchron.iitgn.ac.in/_astro/InterviewBuddy.BVkItRdN.webp",
+//     website: "https://www.sponsor4.com",
+//   },
+// ];
 
 const Hackathon = () => {
   const [openFAQ, setOpenFAQ] = useState(null);
@@ -369,7 +414,17 @@ const Hackathon = () => {
     setOpenFAQ(openFAQ === index ? null : index);
   };
 
-  // const [flipped, setFlipped] = useState([false, false, false]);
+  // const handleClick = (website) => {
+  //   window.open(website, "_blank");
+  // };
+
+  const [flipped, setFlipped] = useState([false, false, false]);
+
+  // const handleFlip = (index) => {
+  //   const updated = [...flipped];
+  //   updated[index] = !updated[index];
+  //   setFlipped(updated);
+  // };
 
   const [activeContent, setActiveContent] = useState("content1");
 
@@ -380,7 +435,7 @@ const Hackathon = () => {
   return (
     <div className="hackathon-container">
       <div className="sidebar">
-        <a href="#hero" className="sidebar-icon" title="Hero Section">
+        <a href="#" className="sidebar-icon" title="Hero Section">
           <FaHome />
         </a>
         <a href="#about" className="sidebar-icon" title="About Section">
